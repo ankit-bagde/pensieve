@@ -17,7 +17,7 @@ os.system("sudo apt-get -y install python-setuptools python-pip xvfb xserver-xep
 os.system("tar xvzf selenium-2.39.0.tar.gz")
 selenium_dir = start_dir + "/selenium-2.39.0"
 os.chdir( selenium_dir )
-os.system("sudo python setup.py install" )
+os.system("python -m setup.py install" )
 os.system("sudo sh -c \"echo 'DBUS_SESSION_BUS_ADDRESS=/dev/null' > /etc/init.d/selenium\"")
 
 # py virtual display
@@ -28,16 +28,19 @@ os.system("sudo dpkg -i google-chrome-stable_current_amd64.deb")
 os.system("sudo apt-get -f -y install")
 
 # tensorflow
-os.system("sudo apt-get -y install python-pip python-dev")
-os.system("sudo pip install tensorflow")
+os.system("sudo apt-get -y install python3-pip python-dev")
+os.system("pip install tensorflow==1.13.2")
 
 # tflearn
-os.system("sudo pip install tflearn")
-os.system("sudo apt-get -y install python-h5py")
-os.system("sudo apt-get -y install python-scipy")
+os.system("pip install tflearn==0.3")
+# os.system("sudo apt-get -y install python-h5py")
+os.system("sudo apt-get install libhdf5-dev")
+# os.system("sudo apt-get -y install python-scipy")
+os.system("pip install scipy")
 
 # matplotlib
-os.system("sudo apt-get -y install python-matplotlib")
+# os.system("sudo apt-get -y install python-matplotlib")
+os.system("pip install matplotlib")
 
 # copy the webpage files to /var/www/html
 os.chdir( start_dir )
@@ -53,5 +56,5 @@ os.system("mkdir run_exp/results")
 os.system("mkdir real_exp/results")
 
 # need to copy the trace and pre-trained NN model
-print "Need to put trace files in 'pensieve/cooked_traces'."
-print "Need to put pre-trained NN model in 'pensieve/rl_server/results'."
+print("Need to put trace files in 'pensieve/cooked_traces'.")
+print("Need to put pre-trained NN model in 'pensieve/rl_server/results'.")

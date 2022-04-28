@@ -58,12 +58,13 @@ try:
 		command = 'exec /usr/bin/python ../rl_server/robust_mpc_server.py ' + trace_file
 	else:
 		command = 'exec /usr/bin/python ../rl_server/simple_server.py ' + abr_algo + ' ' + trace_file
+	print(command)
 	
-	proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+	# proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 	sleep(2)
 	
 	# to not display the page in browser
-	display = Display(visible=0, size=(800,600))
+	display = Display(visible=1, size=(800,600))
 	display.start()
 	
 	# initialize chrome driver
@@ -71,6 +72,7 @@ try:
 	chrome_driver = '../abr_browser_dir/chromedriver'
 	options.add_argument('--user-data-dir=' + chrome_user_dir)
 	options.add_argument('--ignore-certificate-errors')
+	options.add_argument('--autoplay-policy=no-user-gesture-required')
 	driver=webdriver.Chrome(chrome_driver, chrome_options=options)
 	
 	# run chrome
@@ -83,7 +85,7 @@ try:
 	display.stop()
 	
 	# kill abr algorithm server
-	proc.send_signal(signal.SIGINT)
+	# proc.send_signal(signal.SIGINT)
 	# proc.kill()
 	
 	print 'done'
