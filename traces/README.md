@@ -6,7 +6,7 @@ $ wget http://data.fcc.gov/download/measuring-broadband-america/2016/data-raw-20
 $ tar -xvzf data-raw-2016-jun.tar.gz -C fcc
 
 # Norway HSDPA bandwidth logs
-$ wget -r --no-parent --reject "index.html*" http://home.ifi.uio.no/paalh/dataset/hsdpa-tcp-logs/
+$ wget -r --no-parent --reject "index.html*" https://datasets.simula.no/hsdpa-tcp-logs/
 
 # Belgium 4G/LTE bandwidth logs (bonus)
 $ wget http://users.ugent.be/~jvdrhoof/dataset-4g/logs/logs_all.zip
